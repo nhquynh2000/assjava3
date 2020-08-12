@@ -360,14 +360,12 @@ public class QLSV extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        //save
         String masv = this.txtmasv.getText();//lay gt
         String hoten = this.txthoten.getText();
         String email = this.txtmail.getText();
         String sđt = this.txtsdt.getText();
         String diachi = this.txtdiachi.getText();
         String hinh =this.lblanh.getToolTipText();
-       
         if (masv.length() == 0
                 || hoten.length() == 0
                 || email.length() == 0
@@ -376,6 +374,7 @@ public class QLSV extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Không được để trống");
             return;
         }
+        
         try {
             if (rdoNam.isSelected() == false && rdoNu.isSelected() == false) {
                 JOptionPane.showMessageDialog(this, "Bạn chưa chọn giới tính");
@@ -383,6 +382,14 @@ public class QLSV extends javax.swing.JFrame {
             }
             if (lblanh.getIcon() == null) {
                 JOptionPane.showMessageDialog(this, "Bạn chưa cập nhập ảnh");
+                return;
+            }
+            if(!txtmail.getText().matches("^[\\w-]+@([\\w- ]+\\.)+[\\w-]+$")){
+                   JOptionPane.showMessageDialog(this, "Emil chưa đúng định dạng");
+                return;
+            }
+             if(!txtsdt.getText().matches("\\d{11}")){
+                   JOptionPane.showMessageDialog(this, "sđt chưa đúng định dạng");
                 return;
             }
             for (sinhvien e : listSinhVien) {

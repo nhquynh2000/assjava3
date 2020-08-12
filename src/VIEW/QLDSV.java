@@ -428,12 +428,7 @@ public class QLDSV extends javax.swing.JFrame {
         String tanh = this.txtta.getText();
         String tinhoc = this.txtth.getText();
         String gdcd = this.txtgdcd.getText();
-        float tanh1 = 0;
-        tanh1 = Float.parseFloat(tanh);
-        float thoc1 = 0;
-        thoc1 = Float.parseFloat(tinhoc);
-        float gdcd1 = 0;
-        gdcd1 = Float.parseFloat(gdcd);
+      
         if (masv.length() == 0
                 || tanh.length() == 0
                 || tinhoc.length() == 0
@@ -441,15 +436,40 @@ public class QLDSV extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Không được để trống");
             return;
         }
+          float tanh1 = 0;
+        float thoc1 = 0;
+        float gdcd1 = 0;
         try {
-            tanh1 = Integer.parseInt(tanh);
+           tanh1 = Float.parseFloat(tanh);
+           thoc1 = Float.parseFloat(tinhoc);
+             gdcd1 = Float.parseFloat(gdcd);
             if (tanh1 < 0) {
-                JOptionPane.showMessageDialog(this, "điểm tiếng anh phải là số nguyên dương");
+                JOptionPane.showMessageDialog(this, " tiếng anh phải là số nguyên dương");
                 return;
-            };
+            }   
+            else if(tanh1 > 10){
+                 JOptionPane.showMessageDialog(this, " tiếng anh phải nho hon hoặc bẳng 10");
+                return;
+            }
+            if (thoc1 < 0) {
+                JOptionPane.showMessageDialog(this, " tin hoc phải là số nguyên dương");
+                return;
+            }
+              else if(thoc1 > 10){
+                 JOptionPane.showMessageDialog(this, " tin hoc phải nho hon hoặc bẳng 10");
+                return;
+            }
+             if (gdcd1 < 0) {
+                JOptionPane.showMessageDialog(this, " giao duc the chat phải là số nguyên dương");
+                return;
+            }
+               else if(gdcd1 > 10){
+                 JOptionPane.showMessageDialog(this, " giao duc the chat phải nho hon hoặc bẳng 10");
+                return;
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "điểm tiếng anh phải là số");
+            JOptionPane.showMessageDialog(this, "điểm phải là số");
             return;
         }
         try {
