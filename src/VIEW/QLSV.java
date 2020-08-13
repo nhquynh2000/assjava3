@@ -43,7 +43,6 @@ public class QLSV extends javax.swing.JFrame {
                 sv.getDiachi(),
                 sv.getHinh()
             });
-
         }
     }
 
@@ -66,7 +65,6 @@ public class QLSV extends javax.swing.JFrame {
                 String hinh = rs.getString("Hinh");
                 data.add(new sinhvien(masv, hoten, email, sdt, diachi, giotinh, hinh));
             }
-
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "khong tim thay CSDL",
@@ -139,6 +137,7 @@ public class QLSV extends javax.swing.JFrame {
         txtmail.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Add.png"))); // NOI18N
         jButton1.setText("New");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,6 +158,7 @@ public class QLSV extends javax.swing.JFrame {
         rdoNam.setText("Name");
 
         jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Save.png"))); // NOI18N
         jButton5.setText("Save");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,6 +167,7 @@ public class QLSV extends javax.swing.JFrame {
         });
 
         jButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Edit.png"))); // NOI18N
         jButton6.setText("Update");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +176,7 @@ public class QLSV extends javax.swing.JFrame {
         });
 
         jButton7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Delete.png"))); // NOI18N
         jButton7.setText("Delete");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,6 +206,7 @@ public class QLSV extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
         jButton2.setText("THoát");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -240,21 +243,24 @@ public class QLSV extends javax.swing.JFrame {
                         .addComponent(rdoNam)
                         .addGap(18, 18, 18)
                         .addComponent(rdoNu)))
-                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jButton6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton7))
-                    .addComponent(lblanh, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton7))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .addGap(35, 35, 35)
+                        .addComponent(lblanh, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2)
@@ -268,17 +274,17 @@ public class QLSV extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(lblanh, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                        .addComponent(lblanh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
                             .addComponent(jButton5)
                             .addComponent(jButton2))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton6)
                             .addComponent(jButton7))
-                        .addGap(39, 39, 39))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -305,16 +311,15 @@ public class QLSV extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)))
+                        .addGap(18, 55, Short.MAX_VALUE)))
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
-        //show dữ liệu lên text
         int row = table.getSelectedRow();
         txtmasv.setText(table.getValueAt(row, 0).toString());
         txtmasv.setEditable(false);
@@ -331,11 +336,10 @@ public class QLSV extends javax.swing.JFrame {
         if ((String) table.getValueAt(row, 6) != null) {
             lblanh.setIcon(ShareHelper.readLogo((String) table.getValueAt(row, 6)));
         }
-  table.setRowSelectionInterval(row, row);
+        table.setRowSelectionInterval(row, row);
     }//GEN-LAST:event_tableMouseClicked
 
     private void lblanhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblanhMouseClicked
-
         JFileChooser chon = new JFileChooser();
         int chonanh = chon.showOpenDialog(this);
         if (chonanh == JFileChooser.APPROVE_OPTION) {
@@ -348,7 +352,6 @@ public class QLSV extends javax.swing.JFrame {
     }//GEN-LAST:event_lblanhMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //làm ms
         txtmasv.setText(null);
         txtmasv.setEditable(true);
         txthoten.setText(null);
@@ -365,7 +368,7 @@ public class QLSV extends javax.swing.JFrame {
         String email = this.txtmail.getText();
         String sđt = this.txtsdt.getText();
         String diachi = this.txtdiachi.getText();
-        String hinh =this.lblanh.getToolTipText();
+        String hinh = this.lblanh.getToolTipText();
         if (masv.length() == 0
                 || hoten.length() == 0
                 || email.length() == 0
@@ -374,7 +377,6 @@ public class QLSV extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Không được để trống");
             return;
         }
-        
         try {
             if (rdoNam.isSelected() == false && rdoNu.isSelected() == false) {
                 JOptionPane.showMessageDialog(this, "Bạn chưa chọn giới tính");
@@ -384,12 +386,12 @@ public class QLSV extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Bạn chưa cập nhập ảnh");
                 return;
             }
-            if(!txtmail.getText().matches("^[\\w-]+@([\\w- ]+\\.)+[\\w-]+$")){
-                   JOptionPane.showMessageDialog(this, "Emil chưa đúng định dạng");
+            if (!txtmail.getText().matches("^[\\w-]+@([\\w- ]+\\.)+[\\w-]+$")) {
+                JOptionPane.showMessageDialog(this, "Emil chưa đúng định dạng");
                 return;
             }
-             if(!txtsdt.getText().matches("\\d{11}")){
-                   JOptionPane.showMessageDialog(this, "sđt chưa đúng định dạng");
+            if (!txtsdt.getText().matches("\\d{11}")) {
+                JOptionPane.showMessageDialog(this, "sđt chưa đúng định dạng");
                 return;
             }
             for (sinhvien e : listSinhVien) {
@@ -425,44 +427,55 @@ public class QLSV extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Lưu thành công");
             ResultSet rs = ps.getResultSet();
             rs.next();
-
-            this.listSinhVien.add(new sinhvien(masv, hoten, email, sđt, diachi, hinh,hinh));
+            this.listSinhVien.add(new sinhvien(masv, hoten, email, sđt, diachi, hinh, hinh));
             this.renderTable(this.listSinhVien);
         } catch (Exception e) {
             e.printStackTrace();
-
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        int row = this.table.getSelectedRow();
-        if (row == -1) {
-            return;
-        }
-        String masv = this.table.getValueAt(row, 0).toString();
-        String sql = "Delete from STUDENTS  Where MASV=?";
+
         try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");//load drive
-            String url = "jdbc:sqlserver://localhost:1433;databaseName=QLSV31";
-            Connection con = DriverManager.getConnection(url, this.user, this.password);
-            PreparedStatement conv = con.prepareStatement(sql);
-            conv.setString(1, masv);
-            conv.executeUpdate();
+            try {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");//load drive
+                String url = "jdbc:sqlserver://localhost:1433;databaseName=QLSV31";
+                Connection con = DriverManager.getConnection(url, this.user, this.password);
+                PreparedStatement conv = con.prepareStatement("Delete Grade  Where MASV=?");
+                
+                conv.setString(1, txtmasv.getText());
+                conv.executeLargeUpdate();
+                con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");//load drive
+                String url = "jdbc:sqlserver://localhost:1433;databaseName=QLSV31";
+                Connection con = DriverManager.getConnection(url, this.user, this.password);
+                PreparedStatement conv = con.prepareStatement("Delete STUDENTS  Where MASV=?");
+                conv.setString(1, txtmasv.getText());
+                conv.executeUpdate();
+                con.close();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
             JOptionPane.showMessageDialog(this, "Delete thành công");
             this.listSinhVien = this.fetchList();
             this.renderTable(this.listSinhVien);
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        //update
         String masv = this.txtmasv.getText();//lay gt
         String hoten = this.txthoten.getText();
         String email = this.txtmail.getText();
         String sđt = this.txtsdt.getText();
         String diachi = this.txtdiachi.getText();
+        String hinh = this.lblanh.getToolTipText();
         if (masv.length() == 0
                 || hoten.length() == 0
                 || email.length() == 0
@@ -480,10 +493,16 @@ public class QLSV extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Bạn chưa cập nhập ảnh");
                 return;
             }
-
+            if (!txtmail.getText().matches("^[\\w-]+@([\\w- ]+\\.)+[\\w-]+$")) {
+                JOptionPane.showMessageDialog(this, "Emil chưa đúng định dạng");
+                return;
+            }
+            if (!txtsdt.getText().matches("\\d{11}")) {
+                JOptionPane.showMessageDialog(this, "sđt chưa đúng định dạng");
+                return;
+            }
         } catch (Exception e) {
             e.printStackTrace();
-
             return;
         }
         try {
@@ -509,18 +528,13 @@ public class QLSV extends javax.swing.JFrame {
             this.renderTable(this.listSinhVien);
         } catch (Exception e) {
             e.printStackTrace();
-
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-           // TODO add your handling code here:
-       int chon = JOptionPane.showConfirmDialog(this, "Bạn có muốn thoát không ?", "Thông báo Thoát", JOptionPane.YES_NO_OPTION);
-        if (chon == JOptionPane.YES_OPTION) {
-            setVisible(false);
-        } else {
-            return;
-        }
+        JOptionPane.showMessageDialog(this, "Bạn có muốn thoát k ");
+        this.dispose();
+        new Dangnhap().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {

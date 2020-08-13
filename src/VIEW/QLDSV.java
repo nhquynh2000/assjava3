@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
 public class QLDSV extends javax.swing.JFrame {
     protected ArrayList<điem> listDiemSV;
     protected String user, password;
@@ -46,7 +45,8 @@ public class QLDSV extends javax.swing.JFrame {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             String url = "jdbc:sqlserver://localhost:1433;databaseName=QLSV31";
             Connection con = DriverManager.getConnection(url, user, password);
-            String sql = "select top(3) STUDENTS.MASV,STUDENTS.Hoten,Tienganh,Tinhoc,GDTC,(Tienganh+Tinhoc+GDTC )/3  AS TBM  from GRADE inner join STUDENTS on GRADE.MASV=STUDENTS.MASV order by TBM DESC";
+            String sql = "select top(3) STUDENTS.MASV,STUDENTS.Hoten,Tienganh,Tinhoc,GDTC,Round(((Tienganh+Tinhoc+GDTC )/3),1)  AS TBM  from GRADE \n" +
+"                    inner join STUDENTS on GRADE.MASV=STUDENTS.MASV  order by TBM DESC  ";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
@@ -110,6 +110,7 @@ public class QLDSV extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
+        jButton10 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -154,7 +155,7 @@ public class QLDSV extends javax.swing.JFrame {
 
         lblhoten.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jButton6.setText("<|");
+        jButton6.setText("|<");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -265,6 +266,7 @@ public class QLDSV extends javax.swing.JFrame {
         );
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Add.png"))); // NOI18N
         jButton2.setText("New");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,6 +275,7 @@ public class QLDSV extends javax.swing.JFrame {
         });
 
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Save.png"))); // NOI18N
         jButton3.setText("Save");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,6 +284,7 @@ public class QLDSV extends javax.swing.JFrame {
         });
 
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Delete.png"))); // NOI18N
         jButton4.setText("Delete");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -293,6 +297,7 @@ public class QLDSV extends javax.swing.JFrame {
         jLabel1.setText("Quản lý điểm sinh viên");
 
         jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Edit.png"))); // NOI18N
         jButton5.setText("Update");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -314,6 +319,7 @@ public class QLDSV extends javax.swing.JFrame {
         });
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Search.png"))); // NOI18N
         jButton1.setText("search");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -331,8 +337,8 @@ public class QLDSV extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(txtmsvtk, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,6 +367,15 @@ public class QLDSV extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(table);
 
+        jButton10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Exit.png"))); // NOI18N
+        jButton10.setText("THoát");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -373,19 +388,17 @@ public class QLDSV extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                            .addComponent(jButton10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -402,7 +415,9 @@ public class QLDSV extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
+                        .addGap(9, 9, 9)
+                        .addComponent(jButton10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
                         .addComponent(jButton3)
@@ -428,7 +443,6 @@ public class QLDSV extends javax.swing.JFrame {
         String tanh = this.txtta.getText();
         String tinhoc = this.txtth.getText();
         String gdcd = this.txtgdcd.getText();
-      
         if (masv.length() == 0
                 || tanh.length() == 0
                 || tinhoc.length() == 0
@@ -436,35 +450,32 @@ public class QLDSV extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Không được để trống");
             return;
         }
-          float tanh1 = 0;
+        float tanh1 = 0;
         float thoc1 = 0;
         float gdcd1 = 0;
         try {
-           tanh1 = Float.parseFloat(tanh);
-           thoc1 = Float.parseFloat(tinhoc);
-             gdcd1 = Float.parseFloat(gdcd);
+            tanh1 = Float.parseFloat(tanh);
+            thoc1 = Float.parseFloat(tinhoc);
+            gdcd1 = Float.parseFloat(gdcd);
             if (tanh1 < 0) {
                 JOptionPane.showMessageDialog(this, " tiếng anh phải là số nguyên dương");
                 return;
-            }   
-            else if(tanh1 > 10){
-                 JOptionPane.showMessageDialog(this, " tiếng anh phải nho hon hoặc bẳng 10");
+            } else if (tanh1 > 10) {
+                JOptionPane.showMessageDialog(this, " tiếng anh phải nho hon hoặc bẳng 10");
                 return;
             }
             if (thoc1 < 0) {
                 JOptionPane.showMessageDialog(this, " tin hoc phải là số nguyên dương");
                 return;
-            }
-              else if(thoc1 > 10){
-                 JOptionPane.showMessageDialog(this, " tin hoc phải nho hon hoặc bẳng 10");
+            } else if (thoc1 > 10) {
+                JOptionPane.showMessageDialog(this, " tin hoc phải nho hon hoặc bẳng 10");
                 return;
             }
-             if (gdcd1 < 0) {
+            if (gdcd1 < 0) {
                 JOptionPane.showMessageDialog(this, " giao duc the chat phải là số nguyên dương");
                 return;
-            }
-               else if(gdcd1 > 10){
-                 JOptionPane.showMessageDialog(this, " giao duc the chat phải nho hon hoặc bẳng 10");
+            } else if (gdcd1 > 10) {
+                JOptionPane.showMessageDialog(this, " giao duc the chat phải nho hon hoặc bẳng 10");
                 return;
             }
         } catch (Exception e) {
@@ -504,16 +515,50 @@ public class QLDSV extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        String masv = this.txtmsv.getText();//lay gt
+           String masv = this.txtmsv.getText();//lay gt
         String tanh = this.txtta.getText();
         String tinhoc = this.txtth.getText();
         String gdcd = this.txtgdcd.getText();
+        if (masv.length() == 0
+                || tanh.length() == 0
+                || tinhoc.length() == 0
+                || gdcd.length() == 0) {
+            JOptionPane.showMessageDialog(this, "Không được để trống");
+            return;
+        }
         float tanh1 = 0;
-        tanh1 = Float.parseFloat(tanh);
         float thoc1 = 0;
-        thoc1 = Float.parseFloat(tinhoc);
         float gdcd1 = 0;
-        gdcd1 = Float.parseFloat(gdcd);
+        try {
+            tanh1 = Float.parseFloat(tanh);
+            thoc1 = Float.parseFloat(tinhoc);
+            gdcd1 = Float.parseFloat(gdcd);
+            if (tanh1 < 0) {
+                JOptionPane.showMessageDialog(this, " tiếng anh phải là số nguyên dương");
+                return;
+            } else if (tanh1 > 10) {
+                JOptionPane.showMessageDialog(this, " tiếng anh phải nho hon hoặc bẳng 10");
+                return;
+            }
+            if (thoc1 < 0) {
+                JOptionPane.showMessageDialog(this, " tin hoc phải là số nguyên dương");
+                return;
+            } else if (thoc1 > 10) {
+                JOptionPane.showMessageDialog(this, " tin hoc phải nho hon hoặc bẳng 10");
+                return;
+            }
+            if (gdcd1 < 0) {
+                JOptionPane.showMessageDialog(this, " giao duc the chat phải là số nguyên dương");
+                return;
+            } else if (gdcd1 > 10) {
+                JOptionPane.showMessageDialog(this, " giao duc the chat phải nho hon hoặc bẳng 10");
+                return;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "điểm phải là số");
+            return;
+        }
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");//load drive
             String url = "jdbc:sqlserver://localhost:1433;databaseName=QLSV31";
@@ -581,16 +626,19 @@ public class QLDSV extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        row = 0;
-        this.shows(row);
+        shows(0);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        row--;
-        if (row < 0) {
-            row = 0;
+        try {
+            if (row > 0) {
+                row--;
+                shows(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showConfirmDialog(this, "loi ");
         }
-        shows(row);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -604,6 +652,12 @@ public class QLDSV extends javax.swing.JFrame {
         row = listDiemSV.size() - 1;
         shows(row);
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        JOptionPane.showMessageDialog(this, "Bạn có muốn thoát k ");
+        this.dispose();
+        new Dangnhap().setVisible(true);
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -643,6 +697,7 @@ public class QLDSV extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

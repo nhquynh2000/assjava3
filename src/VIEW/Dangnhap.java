@@ -142,7 +142,7 @@ public class Dangnhap extends javax.swing.JFrame {
                 if (role.equals("DT")) {
                     JOptionPane.showMessageDialog(rootPane, "Đăng nhập thành công");
                     new QLSV(role).setVisible(true);
-                       this.dispose();
+                      this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Đăng nhập thành công");
                     new QLDSV(role).setVisible(true);
